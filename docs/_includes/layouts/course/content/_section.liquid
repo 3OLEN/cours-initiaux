@@ -1,0 +1,9 @@
+<div class="course-panel">
+    <h2>{{ include.section.title }}</h2>
+
+    {% if include.section.text %}
+        <p>{{ include.section.text }}</p>
+    {% endif %}
+
+    {% include layouts/course/content/_section_content.liquid content=include.section.content %}
+</div>

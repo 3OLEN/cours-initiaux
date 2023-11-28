@@ -1,10 +1,16 @@
 // Placeholder to allow defining custom styles that override everything else.
 // (Use `_sass/minima/custom-variables.scss` to override variable defaults)
+@import "custom-pages";
 
 // ----- LIST
 ul li + li,
 ol li + li {
   margin-top: 0.25em;
+}
+
+// ----- SEPARATOR
+hr {
+  border-color: $border-color-01;
 }
 
 // ----- TEXT

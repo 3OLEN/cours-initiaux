@@ -1,0 +1,36 @@
+---
+layout: base
+---
+
+<article>
+    <header class="course-header">
+        <h1 class="course-title">
+            <span class="course-name">{{ page.course }}</span>
+            <span class="course-object">{{ page.object }}</span>
+        </h1>
+        <strong class="course-session">
+            📅 {% include templates/text/_date_fr.liquid date=page.session with_day=true %}
+        </strong>
+    </header>
+
+    {% if page.objectives %}
+        <h2>🎯 Objectifs</h2>
+        <blockquote>
+            <ul>
+                {% for course_objective in page.objectives %}
+                    <li>
+                        <strong>{{ course_objective.name }}</strong>
+                        : {{ course_objective.description }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </blockquote>
+    {% endif %}
+
+    {% for page_element in page.elements %}
+        {% include layouts/course/content/_section.liquid section=page_element %}
+    {% endfor %}
+
+    {{ content }}
+</article>
+

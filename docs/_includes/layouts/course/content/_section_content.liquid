@@ -1,0 +1,8 @@
+{% for section_part in include.content %}
+    {% if section_part.list %}
+        {% include layouts/course/content/_list.liquid list=section_part.list %}
+    {% endif %}
+
+    {% if section_part.separator %}<hr>{% endif %}
+{% endfor %}
+

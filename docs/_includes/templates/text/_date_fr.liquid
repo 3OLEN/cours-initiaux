@@ -1,0 +1,65 @@
+{%- assign date_fr = include.date | date: "%e" |  plus: 0 -%}
+
+{%- comment -%}Month{%- endcomment -%}
+{%- assign month_no = include.date | date: "%m" | plus: 0 -%}
+{%- case month_no -%}
+    {%- when 1 -%}
+        {%- assign month_fr = 'janvier' -%}
+    {%- when 2 -%}
+        {%- assign month_fr = 'février' -%}
+    {%- when 3 -%}
+        {%- assign month_fr = 'mars' -%}
+    {%- when 4 -%}
+        {%- assign month_fr = 'avril' -%}
+    {%- when 5 -%}
+        {%- assign month_fr = 'mai' -%}
+    {%- when 6 -%}
+        {%- assign month_fr = 'juin' -%}
+    {%- when 7 -%}
+        {%- assign month_fr = 'juillet' -%}
+    {%- when 8 -%}
+        {%- assign month_fr = 'août' -%}
+    {%- when 9 -%}
+        {%- assign month_fr = 'septembre' -%}
+    {%- when 10 -%}
+        {%- assign month_fr = 'octobre' -%}
+    {%- when 11 -%}
+        {%- assign month_fr = 'novembre' -%}
+    {%- when 12 -%}
+        {%- assign month_fr = 'décembre' -%}
+{%- endcase -%}
+{%- if month_fr -%}
+    {%- assign date_fr = date_fr | append: ' ' | append: month_fr -%}
+{%- endif -%}
+
+{%- comment -%}Day{%- endcomment -%}
+{%- if include.with_day -%}
+    {%- assign day_no = include.date | date: "%u" | plus: 0 -%}
+    {%- case day_no -%}
+        {%- when 1 -%}
+            {%- assign day_fr = 'lundi' -%}
+        {%- when 2 -%}
+            {%- assign day_fr = 'mardi' -%}
+        {%- when 3 -%}
+            {%- assign day_fr = 'mercredi' -%}
+        {%- when 4 -%}
+            {%- assign day_fr = 'jeudi' -%}
+        {%- when 5 -%}
+            {%- assign day_fr = 'vendredi' -%}
+        {%- when 6 -%}
+            {%- assign day_fr = 'samedi' -%}
+        {%- when 7 -%}
+            {%- assign day_fr = 'dimanche' -%}
+    {%- endcase -%}
+    {%- if day_fr -%}
+        {%- assign date_fr = day_fr | append: ' ' | append: date_fr -%}
+    {%- endif -%}
+{%- endif -%}
+
+{%- comment -%}Year{%- endcomment -%}
+{%- if include.with_year -%}
+    {%- assign year_fr = include.date | date: "%Y" -%}
+    {%- assign date_fr = date_fr | append: ' ' | append: year_fr -%}
+{%- endif -%}
+
+{{- date_fr -}}

@@ -1,0 +1,27 @@
+<ul>
+    {% for list_element in include.list %}
+        <li>
+            {% if list_element.name %}
+                <strong>{{ list_element.name }}</strong>
+                {% if list_element.fr %}
+                    (🇫🇷 {{ list_element.fr }})
+                {% endif %}
+            {% endif %}
+
+            {% if list_element.description %}
+                {% if list_element.name %} : {% endif %}
+                {{ list_element.description }}
+            {% endif %}
+
+            {% if list_element.external_link %}
+                <a href="{{ list_element.external_link.href }}" target="_blank">
+                    {{ list_element.external_link.label }}
+                </a>
+
+                {% if list_element.external_link.comment %}
+                    : <em>{{ list_element.external_link.comment }}</em>
+                {% endif %}
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>

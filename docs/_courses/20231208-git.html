@@ -1,0 +1,76 @@
+---
+layout: course
+title: "Git - 8 décembre"
+permalink: /git/8-decembre
+
+# Metadata
+course: Git
+object: "Reprendre et pratiquer"
+session: "2023-12-08"
+
+# Page content
+objectives:
+- name: "Reprendre Git"
+  description: "Profiter de ce temps de cours pour <u>poser des questions</u> sur les concepts de Git, les différentes
+commandes, les cas d'utilisation, etc."
+- name: "Cas pratique « Dev » et « Infra »"
+  description: "Travailler en groupe sur un cas pratique pour les « Dev » ou pour les « Infra »."
+- name: "Approfondir"
+  description: "Suivre des bonnes pratiques sur l'utilisation de Git, les workflows, les fonctions avancées et
+solliciter l'expérience du formateur."
+
+elements:
+- title: "📑 Glossaire simplifié"
+  content:
+  - list:
+    - name: Git
+      description: "Système de gestion de versions décentralisé ; suivi des changements de fichiers texte (création
+/ modification / déplacement / droits / suppression) au sein du repository."
+    - name: Repository
+      fr: Dépôt
+      description: "Espace de travail contenant l'ensemble du projet (fichiers, dossiers) et les informations
+de versioning.
+<br>Il est local (représenté par le dossier du projet) et distant (sur un serveur ou un service en ligne : GitHub,
+GitLab, BitBucket, etc.)."
+    - name: Branche
+      description: "Ligne de travail indépendante créée à partir d'un point de l'historique et contenant l'ensemble du
+projet défini à cet instant précis."
+    - name: Commit
+      description: "Instantané du projet ; fige des changements à un instant précis. Un commit est identifié par un hash
+SHA-1 unique."
+    - name: Stage
+      fr: Index
+      description: "Zone d'état des changements sélectionnés pour intégrer le prochain commit."
+    - name: HEAD
+      description: "Nom donné au pointeur sur la branche courante."
+  - separator: true
+  - list:
+    - name: "Push"
+      description: "Action permettant de déposer sur la branche distante les nouveaux commits de la branche locale."
+    - name: "Merge"
+      description: "Action permettant d'ajouter les changements d'une branche sur une autre."
+    - name: "Pull"
+      description: "Action permettant de récupérer les changements de la branche distante sur la branche locale."
+    - name: "Rebase"
+      description: "Action permettant d'intégrer l'historique d'une branche sur une autre."
+- title: "🔗 Ressources utiles"
+  content:
+  - list:
+    - external_link:
+        href: https://git-scm.com/doc
+        label: "Manuel officiel de Git"
+        comment: "Certaines pages sont disponibles en français, mais il reste préférable de s'habituer au vocabulaire
+anglais."
+    - external_link:
+        href: https://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1
+        label: "Visualized Git commands"
+        comment: "Illustrations animées des commandes Git les plus courantes."
+    - external_link:
+        href: https://education.github.com/git-cheat-sheet-education.pdf
+        label: "Git Cheat Sheet"
+        comment: "Cheatsheet des commandes Git les plus courantes."
+    - external_link:
+        href: https://lyon-ort.fr/course/view.php?id=29#section-6
+        label: "Moodle - Module Git"
+        comment: "Cours et corrections des TP."
+---
