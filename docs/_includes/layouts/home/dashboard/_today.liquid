@@ -1,0 +1,32 @@
+{% for course_page in include.course_pages %}
+    <article class="dashboard-today">
+        {% comment %}Course metadata{% endcomment %}
+        <h3>
+            {% include templates/courses/_badge.liquid name=course_page.course %}
+            {{ course_page.object }}
+        </h3>
+
+        <div class="dashboard-card">
+            <h4>🎯 Objectifs</h4>
+            <ul class="dashboard-card-body">
+                {% for objective in course_page.objectives %}
+                    <li>{{ objective.description }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        {% comment %}Course tutorials{% endcomment %}
+{% comment %}
+TODO
+{% endcomment %}
+
+        <footer>
+            <a href="{{ course_page.url | relative_url }}">Accéder aux détails du cours</a>
+        </footer>
+    </article>
+
+    {% comment %}Separator{% endcomment %}
+    {% unless forloop.last %}
+        <hr>
+    {% endunless %}
+{% endfor %}

@@ -1,0 +1,16 @@
+{% assign course_count = include.course_pages | size %}
+{% assign limit = include.limite | default: course_count %}
+
+<ul>
+    {% for course_page in include.course_pages limit: limit %}
+        <li>
+            {% if include.with_link %}
+                <a href="{{ course_page.url | relative_url }}" title="Accéder au cours...">🔗</a>
+            {% endif %}
+
+            <strong>{% include templates/text/_date_fr.liquid date=course_page.session %}</strong>
+            {% include templates/courses/_badge.liquid name=course_page.course %}
+            {{ course_page.object }}
+        </li>
+    {% endfor %}
+</ul>

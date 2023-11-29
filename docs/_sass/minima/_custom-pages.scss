@@ -1,4 +1,5 @@
-/********** Course pages **********/
+/***** COLLECTIONS *****/
+/********** Courses **********/
 .course-header {
   border-bottom: 1px solid $border-color-01;
   margin-bottom: 1em;
@@ -6,14 +7,13 @@
 }
 .course-title {
   @include relative-font-size(2);
-
-  .course-name {
-    background-color: $brand-color;
-    border-radius: 9999px;
-    color: #FFF;
-    padding: 0.25em 0.5em;
-    text-shadow: 2px 2px 4px $background-color;
-  }
+}
+.course-name {
+  background-color: $brand-color;
+  border-radius: 9999px;
+  color: #FFF;
+  padding: 0.25em 0.5em;
+  text-shadow: 2px 2px 4px $background-color;
 }
 .course-session {
   @include relative-font-size(1);
@@ -25,4 +25,79 @@
   border-width: 0 0 1px 1px;
   margin: 1.25em 0 1.5em 0;
   padding: 0 0 1em 1em;
+}
+
+/***** HOME *****/
+.dashboard {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 1em 3em;
+
+  section {
+    border: 1px solid $border-color-01;
+    border-radius: 1em;
+    padding: 0.5em 0;
+
+    &.dashboard-full {
+      grid-column: 1 / -1;
+    }
+
+    h2 {
+      border-bottom: 1px solid $border-color-01;
+      padding-bottom: 0.25em;
+      margin-bottom: 0.5em;
+      text-align: center;
+    }
+    .dashboard-panel-content {
+      padding: 0 1em;
+
+      :last-child {
+        margin-bottom: 0.25em;
+      }
+    }
+
+    article {
+      display: grid;
+      gap: 0.5rem;
+
+      &.dashboard-today {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      & + article {
+        border-top: 1px dashed $border-color-01;
+        margin-top: 0.5rem;
+        padding-top: 0.5rem;
+      }
+
+      h3 {
+        grid-column: 1 / -1;
+        margin: 0;
+        text-align: center;
+      }
+      .dashboard-card {
+        border: 1px solid $border-color-01;
+
+        h4 {
+          border-bottom: 1px solid $border-color-01;
+          margin-bottom: 0.5em;
+          padding: 0.25em 0;
+          text-align: center;
+        }
+        .dashboard-card-body {
+          margin-bottom: 0.25em;
+          padding: 0 1em;
+        }
+      }
+      footer {
+        grid-column: 1 / -1;
+        text-align: center;
+      }
+    }
+    hr {
+      border: 0;
+      border-bottom: 1px dashed $border-color-01;
+      margin: 0.5em 0;
+    }
+  }
 }

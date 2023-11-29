@@ -1,6 +1,69 @@
 ---
 layout: home
-title: "Page d'accueil"
+title: "Tableau de bord"
 ---
 
-<p>{{ site.description }}</p>
+{% assign today = "today" | date: "%F" %}
+{% assign today_timestamp = "today" | date: "%s" | plus: 0 %}
+
+<div class="dashboard">
+    {% comment %}Cours du jour{% endcomment %}
+    {% assign today_courses = site.courses | where: "session", today %}
+
+    <section class="dashboard-full">
+        <h2>Aujourd'hui - {% include templates/text/_date_fr.liquid date=today with_day=true %}</h2>
+        <div class="dashboard-panel-content">
+            {% assign today_course_count = today_courses | size %}
+            {% if today_course_count > 0 %}
+                {% include layouts/home/dashboard/_today.liquid course_pages=today_courses %}
+            {% else %}
+                <blockquote>Aucun cours aujourd'hui...</blockquote>
+            {% endif %}
+        </div>
+    </section>
+
+    {% comment %}Cours à venir / Cours passés{% endcomment %}
+    {% assign other_courses_where_exp = "item.session != '" | append: today | append: "'" %}
+    {% assign other_courses = site.courses
+            | where_exp: "item", other_courses_where_exp
+            | sort: "session" %}
+    {% assign next_courses = other_courses | where: "", "" %}
+    {% assign previous_courses = other_courses | where: "", "" %}
+    {% for defined_course in other_courses %}
+        {% assign session_timestamp = defined_course.session | date: "%s" | plus: 0 %}
+        {% if session_timestamp < today_timestamp %}
+            {% assign previous_courses = previous_courses | push: defined_course %}
+        {% else %}
+            {% assign next_courses = next_courses | push: defined_course %}
+        {% endif %}
+    {% endfor %}
+    {% assign previous_courses = previous_courses | reverse %}
+
+    <section>
+        <h2>Prochains cours</h2>
+        <div class="dashboard-panel-content">
+            {% assign next_course_count = next_courses | size %}
+            {% if next_course_count > 0 %}
+                {% include layouts/home/dashboard/_course_list.liquid course_pages=next_courses limit=10 %}
+            {% else %}
+                <blockquote>Aucun cours à venir...</blockquote>
+            {% endif %}
+        </div>
+    </section>
+    <section>
+        <h2>Cours passés</h2>
+        <div class="dashboard-panel-content">
+            {% assign previous_course_count = previous_courses | size %}
+            {% if previous_course_count > 0 %}
+                {% include layouts/home/dashboard/_course_list.liquid
+                        course_pages=previous_courses
+                        limit=10
+                        with_link=true
+                %}
+            {% else %}
+                <blockquote>Aucun contenu passé...</blockquote>
+            {% endif %}
+        </div>
+    </section>
+</div>
+

@@ -5,7 +5,7 @@ layout: base
 <article>
     <header class="course-header">
         <h1 class="course-title">
-            <span class="course-name">{{ page.course }}</span>
+            {% include templates/courses/_badge.liquid name=page.course %}
             <span class="course-object">{{ page.object }}</span>
         </h1>
         <strong class="course-session">
