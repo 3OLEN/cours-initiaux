@@ -1,0 +1,13 @@
+<ul class="list-group">
+    {% for group in include.groups %}
+        <li class="list-group-item">
+            <strong class="list-group-item-name">{{ group.name }}</strong>
+            <ul class="list-group-item-members">
+                {% assign sorted_membres = group.members | sort %}
+                {% for member in sorted_membres %}
+                    <li>{{ member }}</li>
+                {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+</ul>

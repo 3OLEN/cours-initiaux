@@ -1,0 +1,62 @@
+_templating:
+  _groups:
+    _dev: &dev_group
+      group: Dev
+    _ops: &ops_group
+      group: Infra
+
+roster:
+  - name: &student_campo "CAMPO William"
+    <<: *dev_group
+  - name: &student_collomb "COLLOMB Vincent"
+    <<: *ops_group
+  - name: &student_de_ascencao "DE ASCENCAO Damien"
+    <<: *dev_group
+  - name: &student_demarbaix "DEMARBAIX Maxime"
+    <<: *ops_group
+  - name: &student_faidhi "FAIDHI Aymane"
+    <<: *dev_group
+  - name: &student_khelouf "KHELOUF Ahmed"
+    <<: *dev_group
+  - name: &student_marzeridoux "MARZERIDOUX Hugo"
+    <<: *ops_group
+  - name: &student_mislimi "MISLIMI Enes"
+    <<: *dev_group
+  - name: &student_montoya "MONTOYA Anthony"
+    <<: *dev_group
+  - name: &student_mougou "MOUGOU Marwan"
+    <<: *ops_group
+  - name: &student_neema "NEEMA Florian"
+    <<: *dev_group
+  - name: &student_presle "PRESLE Luca"
+    <<: *dev_group
+  - name: &student_rispoli "RISPOLI Mattéo"
+    <<: *ops_group
+
+_teams:
+  git:
+    - name: Dev 1
+      members:
+        - *student_campo
+        - *student_de_ascencao
+    - name: Dev 2
+      members:
+        - *student_faidhi
+        - *student_khelouf
+    - name: Dev 3
+      members:
+        - *student_mislimi
+        - *student_neema
+    - name: Dev 4
+      members:
+        - *student_montoya
+        - *student_presle
+    - name: Infra 1
+      members:
+        - *student_collomb
+        - *student_rispoli
+    - name: Infra 2
+      members:
+        - *student_demarbaix
+        - *student_marzeridoux
+        - *student_mougou

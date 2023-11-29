@@ -74,3 +74,15 @@ anglais."
         label: "Moodle - Module Git"
         comment: "Cours et corrections des TP."
 ---
+
+<h2>Groupes TP</h2>
+<p>
+    Les TP "Git" demandent d'être réalisés en groupe pour mieux appréhender l'aspect <u>collaboratif</u>. Ces groupes
+    ont été effectués de manière aléatoire. S'il y a le moindre problème, n'hésitez pas à m'en faire part.
+</p>
+
+{% assign dev_groups = site.data.students._teams.git | where_exp: "item", "item.name contains 'Dev'" %}
+{% include templates/list/_student_groups.liquid groups=dev_groups %}
+
+{% assign ops_group = site.data.students._teams.git | where_exp: "item", "item.name contains 'Infra'" %}
+{% include templates/list/_student_groups.liquid groups=ops_group %}
