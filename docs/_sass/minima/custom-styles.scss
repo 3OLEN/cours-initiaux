@@ -27,8 +27,22 @@ hr {
 }
 
 // ---------- FOOTER
-.footer-col {
-  text-align: center;
+.site-footer {
+  padding-bottom: 0;
+
+  .footer-col {
+    text-align: center;
+  }
+
+  @media screen and (max-width: $on-medium) {
+    .footer-col-wrapper {
+      display: flex;
+
+      .footer-col {
+        flex-grow: 1;
+      }
+    }
+  }
 }
 
 // ----- Others
@@ -44,4 +58,12 @@ hr {
 }
 .text-warning {
   color: $color-warning;
+}
+
+// ----- Responsive helpers
+/* Rules below are designed as "inverted breakpoint" system */
+[class*="md:show"] {
+  @media screen and (max-width: $on-medium) {
+    display: none !important;
+  }
 }

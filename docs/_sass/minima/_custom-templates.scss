@@ -2,6 +2,7 @@
 /********** Group **********/
 .list-group {
   display: flex;
+  flex-wrap: wrap;
   gap: 1em;
   justify-content: center;
   list-style: none;
