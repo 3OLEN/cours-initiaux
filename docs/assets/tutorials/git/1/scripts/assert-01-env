@@ -1,0 +1,33 @@
+#!/bin/bash
+
+set -eu
+
+error() {
+  echo -e "\e[31m$1\e[0m"
+}
+success() {
+  echo -e "\e[32m$1\e[0m"
+}
+
+# Vérifier l'accès à Docker
+if ! command -v docker --version &> /dev/null
+then
+    error "Vous n'avez pas les commandes « docker »."
+    exit 1
+fi
+
+# Vérifier si dans un dépôt Git
+if ! git rev-parse --is-inside-work-tree > /dev/null 2>&1
+then
+    error "Le répertoire courant « $(pwd) » n'est pas un dépôt Git."
+    exit 1
+fi
+
+# Vérifier si sur la branche principale
+if [ "$(git symbolic-ref --short HEAD)" != "main" ]
+then
+    error "Vous êtes sur la branche « $(git symbolic-ref --short HEAD) » alors que vous devriez être sur la branche « main »."
+    exit 1
+fi
+
+success "L'environnement est prêt."

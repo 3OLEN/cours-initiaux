@@ -54,7 +54,9 @@ Dès lors que le dépôt est créé, chaque étudiant va pouvoir le cloner en lo
 
 Vous allez ensuite vérifier que l'environnement local est correctement mis en place :
 
-1. Récupérez le fichier.
+{% assign resource_script_assert_1 = site.static_files | where: "name", "assert-01-env" | first %}
+
+1. Récupérez le fichier : [scripts/assert-01-env]({{ resource_script_assert_1.path | relative_url }}).
 2. Déplacez-le dans le dossier `bin/assert` de votre dépôt.
 3. Assurez-vous qu'il est bien exécutable avec les commandes appropriées.
 4. Exécutez-le : `bin/assert/01-env`.
