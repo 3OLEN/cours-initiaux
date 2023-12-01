@@ -1,0 +1,18 @@
+---
+layout: base
+---
+<section class="post tutorial">
+    <header class="post-header">
+        <div class="post-title">{{ page.subtitle | escape }}</div>
+    </header>
+
+    {% include layouts/tutorials/pagination.liquid %}
+
+    <article class="post-content">
+        {{ content }}
+    </article>
+
+    <footer>
+        {% include layouts/tutorials/footer/pagination.liquid %}
+    </footer>
+</section>

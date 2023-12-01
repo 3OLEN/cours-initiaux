@@ -1,0 +1,24 @@
+<nav class="tutorial-pagination">
+    <div class="pagination-list">
+        {% assign index_page = site.tutorials | where: "slug", "00" | first %}
+        <div class="pagination-item">
+            <a class="pagination-number" href="{{ index_page.url | relative_url }}">Index</a>
+        </div>
+
+        {% if page.previous and page.previous.id != index_page.id %}
+            <div class="pagination-item" title="{{ page.previous.subtitle }}">
+                <a href="{{ page.previous.url | relative_url }}" class="pagination-number">
+                    Précédent
+                </a>
+            </div>
+        {% endif %}
+
+        {% if page.next %}
+            <div class="pagination-item" title="{{ page.next.subtitle }}">
+                <a href="{{ page.next.url | relative_url }}" class="pagination-number">
+                    Suivant
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</nav>

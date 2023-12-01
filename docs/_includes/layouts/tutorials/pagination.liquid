@@ -1,0 +1,34 @@
+<nav class="tutorial-pagination">
+    <ol class="pagination-list">
+        {% assign tutorial_pages = site.tutorials | where: "title", page.title %}
+        {% for tutorial_page in tutorial_pages %}
+            {% if tutorial_page.id == page.id %}
+                {% assign is_active_page = true %}
+            {% else %}
+                {% assign is_active_page = false %}
+            {% endif %}
+
+            {% assign pagination_item_html_class = "pagination-item" %}
+            {% if is_active_page %}
+                {% assign pagination_item_html_class = pagination_item_html_class | append: " active" %}
+            {% endif %}
+            <li class="{{ pagination_item_html_class }}"
+                    {% if tutorial_page.subtitle %}
+                        title="{{ tutorial_page.subtitle }}"
+                    {% endif %}
+            >
+                {% if tutorial_page.slug == "00" %}
+                    {% assign page_text = "Index" %}
+                {% else %}
+                    {% assign page_text = forloop.index0 %}
+                {% endif %}
+
+                {% if is_active_page %}
+                    <span class="pagination-number">{{ page_text }}</span>
+                {% else %}
+                    <a class="pagination-number" href="{{ tutorial_page.url | relative_url }}">{{ page_text }}</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ol>
+</nav>

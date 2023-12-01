@@ -30,6 +30,72 @@
   margin: 1.25em 0 1.5em 0;
   padding: 0 0 1em 1em;
 }
+/********** Tutorials **********/
+.tutorial-pagination {
+  .pagination-list {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5em 0.75em;
+
+    .pagination-item {
+      &.active {
+        .pagination-number {
+          background-color: $brand-color;
+          color: #FFF;
+        }
+      }
+
+      .pagination-number {
+        border: 1px solid $border-color-01;
+        border-radius: 0.5em;
+        display: block;
+        padding: 0.25em .75em;
+      }
+      a {
+        &.pagination-number {
+          color: $text-color;
+          text-decoration: none;
+
+          &:hover {
+            background-color: $link-base-color;
+            color: $background-color;
+          }
+        }
+      }
+    }
+  }
+  ol {
+    &.pagination-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+    }
+
+    > li {
+      & + li {
+        align-items: baseline;
+        column-gap: 0.75em;
+        display: flex;
+        &:before {
+          content: '>>';
+        }
+      }
+    }
+  }
+}
+.tutorial {
+  footer {
+    border-top: 2px solid $border-color-01;
+    margin-top: 1.5em;
+    padding-top: 1em;
+
+    .pagination-list {
+      justify-content: center;
+    }
+  }
+}
 
 /***** HOME *****/
 .dashboard {
