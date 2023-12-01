@@ -6,6 +6,8 @@ _templating:
       group: Infra
 
 roster:
+  - name: &student_bougadoum "BOUGADOUM Chakib"
+    <<: *ops_group
   - name: &student_campo "CAMPO William"
     <<: *dev_group
   - name: &student_collomb "COLLOMB Vincent"
@@ -15,8 +17,6 @@ roster:
   - name: &student_demarbaix "DEMARBAIX Maxime"
     <<: *ops_group
   - name: &student_faidhi "FAIDHI Aymane"
-    <<: *dev_group
-  - name: &student_khelouf "KHELOUF Ahmed"
     <<: *dev_group
   - name: &student_marzeridoux "MARZERIDOUX Hugo"
     <<: *ops_group
@@ -41,16 +41,13 @@ _teams:
         - *student_de_ascencao
     - name: Dev 2
       members:
-        - *student_faidhi
-        - *student_khelouf
-    - name: Dev 3
-      members:
         - *student_mislimi
         - *student_neema
-    - name: Dev 4
+    - name: Dev 3
       members:
         - *student_montoya
         - *student_presle
+        - *student_faidhi
     - name: Infra 1
       members:
         - *student_collomb
@@ -59,4 +56,7 @@ _teams:
       members:
         - *student_demarbaix
         - *student_marzeridoux
+    - name: Infra 3
+      members:
+        - *student_bougadoum
         - *student_mougou
