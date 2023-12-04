@@ -8,3 +8,17 @@ collections:
     output: true
   tutorials:
     output: true
+
+defaults:
+  - scope:
+      type: courses
+    values:
+      layout: course
+  - scope:
+      type: tutorials
+    values:
+      layout: tutorials/page
+  - scope:
+      path: "_tutorials/*/00.md"
+    values:
+      layout: tutorials/index
