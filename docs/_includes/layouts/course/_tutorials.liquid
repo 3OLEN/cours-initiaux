@@ -1,0 +1,17 @@
+{% assign related_tutorials = site.tutorials
+        | where_exp: "tutorial", "tutorial.course.name == page.course"
+        | where_exp: "tutorial", "tutorial.course.sessions contains page.session"
+%}
+{% if related_tutorials != empty %}
+    <div class="course-tutorials">
+        <h2>💻️ TP lié·s au cours</h2>
+
+        <ol>
+            {% for related_tutorial in related_tutorials %}
+                <li>
+                    <a href="{{ related_tutorial.url | relative_url }}">{{ related_tutorial.title }}</a>
+                </li>
+            {% endfor %}
+        </ol>
+    </div>
+{% endif %}

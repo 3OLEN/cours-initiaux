@@ -30,6 +30,44 @@
   margin: 1.25em 0 1.5em 0;
   padding: 0 0 1em 1em;
 }
+.course-tutorials {
+  align-items: center;
+  border-bottom: 2px dashed $border-color-01;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.25em;
+  padding-bottom: 1.25em;
+
+  > h2 {
+    text-align: center;
+  }
+  > ol {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em 1em;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    > li {
+      > a {
+        border: 1px solid $border-color-01;
+        border-radius: 5em;
+        color: $text-color;
+        display: block;
+        padding: 0.5em 1em;
+        text-decoration: none;
+
+        &:hover {
+          background-color: $link-base-color;
+          color: $background-color;
+        }
+      }
+    }
+  }
+}
 /********** Tutorials **********/
 .tutorial-pagination {
   .pagination-list {
