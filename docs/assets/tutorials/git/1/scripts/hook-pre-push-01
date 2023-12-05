@@ -1,0 +1,21 @@
+#!/bin/bash
+
+set -eu
+
+error() {
+  echo -e "\e[31m$1\e[0m"
+}
+
+main_branch=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
+working_branch=$(git rev-parse --abbrev-ref HEAD)
+
+if [ "$working_branch" == "$main_branch" ]; then
+    error "Interdiction de pusher sur la branche principale '$main_branch' !"
+    exit 1
+fi
+
+main_working_diff=$(git rev-list --count origin/$main_branch..$working_branch)
+if [ "$main_working_diff" -gt 1 ]; then
+    error "Vous avez plusieurs commits. Faites un « git rebase -i HEAD~$main_working_diff » pour les *squasher*."
+    exit 1
+fi
