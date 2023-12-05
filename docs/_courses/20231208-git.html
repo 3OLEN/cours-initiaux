@@ -12,8 +12,8 @@ objectives:
 - name: "Reprendre Git"
   description: "Profiter de ce temps de cours pour <u>poser des questions</u> sur les concepts de Git, les différentes
 commandes, les cas d'utilisation, etc."
-- name: "Cas pratique « Dev » et « Infra »"
-  description: "Travailler en groupe sur un cas pratique pour les « Dev » ou pour les « Infra »."
+- name: "Pratique « DevOps »"
+  description: "Travailler en groupe sur un cas pratique orienté « DevOps »."
 - name: "Approfondir"
   description: "Suivre des bonnes pratiques sur l'utilisation de Git, les workflows, les fonctions avancées et
 solliciter l'expérience du formateur."
@@ -80,8 +80,4 @@ anglais."
     ont été effectués de manière aléatoire. S'il y a le moindre problème, n'hésitez pas à m'en faire part.
 </p>
 
-{% assign dev_groups = site.data.students._teams.git | where_exp: "item", "item.name contains 'Dev'" %}
-{% include templates/list/_student_groups.liquid groups=dev_groups %}
-
-{% assign ops_group = site.data.students._teams.git | where_exp: "item", "item.name contains 'Infra'" %}
-{% include templates/list/_student_groups.liquid groups=ops_group %}
+{% include templates/list/_student_groups.liquid groups=site.data.students._teams.git %}

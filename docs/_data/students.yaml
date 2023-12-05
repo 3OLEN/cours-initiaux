@@ -35,28 +35,28 @@ roster:
 
 _teams:
   git:
-    - name: Dev 1
+    - name: Groupe 1
       members:
-        - *student_campo
-        - *student_de_ascencao
-    - name: Dev 2
-      members:
-        - *student_mislimi
+        - *student_mougou
         - *student_neema
-    - name: Dev 3
-      members:
-        - *student_montoya
-        - *student_presle
-        - *student_faidhi
-    - name: Infra 1
-      members:
-        - *student_collomb
-        - *student_rispoli
-    - name: Infra 2
+    - name: Groupe 2
       members:
         - *student_demarbaix
+        - *student_de_ascencao
+    - name: Groupe 3
+      members:
         - *student_marzeridoux
-    - name: Infra 3
+        - *student_campo
+    - name: Groupe 4
       members:
         - *student_bougadoum
-        - *student_mougou
+        - *student_faidhi
+    - name: Groupe 5
+      members:
+        - *student_collomb
+        - *student_montoya
+    - name: Groupe 6
+      members:
+        - *student_rispoli
+        - *student_mislimi
+        - *student_presle
