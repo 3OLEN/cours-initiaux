@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -eu
+
+error() {
+  echo -e "\e[31m$1\e[0m"
+}
+
+# Récupération du nom de la branche de travail (1er argument)
+if [ $# -eq 0 ]; then
+    error "Le nom de la branche de travail est obligatoire."
+    echo "Usage: ${0} <working_branch>"
+
+    exit 1
+fi
+working_branch=$1
+
+main_branch=$(git remote show origin | awk '/HEAD branch/ {print $NF}')
+main_working_diff=$(git rev-list --count origin/$main_branch..origin/$working_branch)
+if [ "${main_working_diff}" -gt 1 ]; then
+    error "Vous avez plusieurs commits. Faites un « git rebase -i HEAD~${main_working_diff} » pour les *squasher*."
+    exit 1
+fi
