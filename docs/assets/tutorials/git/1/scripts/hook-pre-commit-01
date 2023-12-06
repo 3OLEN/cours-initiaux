@@ -17,8 +17,7 @@ fi
 main_working_diff=$(git rev-list --count origin/$main_branch..$working_branch)
 
 # --amend can be used to change the last commit
-is_amend=$(ps -ocommand= -p $PPID | grep -q '\-\-amend')
-if [ is_amend ]; then
+if ps -ocommand= -p $PPID | grep -e '--amend'; then
     if [ "$main_working_diff" -lt 1 ]; then
         last_commit_title=$(git log $working_branch --format=%s -n 1)
 
