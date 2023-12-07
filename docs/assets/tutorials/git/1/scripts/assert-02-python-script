@@ -1,0 +1,23 @@
+#!/bin/bash
+
+error() {
+  echo -e "\e[31m$1\e[0m"
+}
+success() {
+  echo -e "\e[32m$1\e[0m"
+}
+
+ROOT_PATH="$(realpath "$(dirname "$(realpath "${BASH_SOURCE[0]}")")/../..")"
+
+python_output=$(bash "${ROOT_PATH}/bin/python" bin/assert/02a-hello_there.py)
+if ! echo "${python_output}" | grep -q "General Kenobi!"
+then
+    error "Le script « bin/python » n'arrive pas à exécuter des scripts python."
+    echo "Résultat de l'exécution du script :"
+    echo "${python_output}"
+    exit 1
+fi
+
+success "Le script « bin/python » arrive à exécuter des scripts python."
+echo "Hello there!"
+echo ">> ${python_output}"
