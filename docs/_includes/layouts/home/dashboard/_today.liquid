@@ -16,6 +16,25 @@
         </div>
 
         {% comment %}Course tutorials{% endcomment %}
+        <div class="dashboard-card">
+            <h4>💻️ Travaux Pratiques</h4>
+            <div class="dashboard-card-body">
+                <ol class="list-group">
+                    {% assign session_tutorials = site.tutorials | where_exp: "item", "item.course.name == course_page.course" %}
+                    {% for tutorial in session_tutorials %}
+                        {% assign tutorial_sessions = tutorial.course.sessions | join: " -- " %}
+                        {% unless tutorial_sessions contains course_page.session %}
+                            {% continue %}
+                        {% endunless %}
+                        <li>
+                            <a class="list-group-item" href="{{ tutorial.url | relative_url }}">
+                                {{ tutorial.title }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
 {% comment %}
 TODO
 {% endcomment %}
