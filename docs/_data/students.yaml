@@ -10,6 +10,7 @@ roster:
     <<: *ops_group
   - name: &student_campo "CAMPO William"
     <<: *dev_group
+    active: false
   - name: &student_collomb "COLLOMB Vincent"
     <<: *ops_group
   - name: &student_de_ascencao "DE ASCENCAO Damien"
@@ -46,7 +47,7 @@ _teams:
     - name: Groupe 3
       members:
         - *student_marzeridoux
-        - *student_campo
+        - *student_presle
     - name: Groupe 4
       members:
         - *student_bougadoum
@@ -59,4 +60,4 @@ _teams:
       members:
         - *student_rispoli
         - *student_mislimi
-        - *student_presle
+        - *student_campo
