@@ -17,6 +17,8 @@ roster:
     <<: *dev_group
   - name: &student_demarbaix "DEMARBAIX Maxime"
     <<: *ops_group
+  - name: &student_khelouf "KHELOUF Ahmed"
+    <<: *dev_group
   - name: &student_faidhi "FAIDHI Aymane"
     <<: *dev_group
   - name: &student_marzeridoux "MARZERIDOUX Hugo"
@@ -39,25 +41,26 @@ _teams:
     - name: Groupe 1
       members:
         - *student_mougou
-        - *student_neema
+        - *student_khelouf
     - name: Groupe 2
       members:
+        - *student_collomb
         - *student_demarbaix
-        - *student_de_ascencao
     - name: Groupe 3
       members:
-        - *student_marzeridoux
-        - *student_presle
+        - *student_campo
+        - *student_faidhi
+        - *student_mislimi
     - name: Groupe 4
       members:
         - *student_bougadoum
-        - *student_faidhi
+        - *student_de_ascencao
     - name: Groupe 5
       members:
-        - *student_collomb
+        - *student_marzeridoux
         - *student_montoya
+        - *student_rispoli
     - name: Groupe 6
       members:
-        - *student_rispoli
-        - *student_mislimi
-        - *student_campo
+        - *student_presle
+        - *student_neema
