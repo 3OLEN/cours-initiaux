@@ -6,8 +6,9 @@ HEALTHCHECK CMD ["python", "--version"]
 
 WORKDIR /usr/src/scripts
 
-# Define user to prevent root-user
-RUN adduser --allow-bad-names --disabled-password cli \
+# Define user to prevent root-user; set host current user gid and uid to bind both users for better permissions
+RUN addgroup --gid 1001 cli \
+    && adduser --disabled-password --uid 1001 --gid 1001 cli \
     && chown -R cli /usr/src/scripts
 
 USER cli
