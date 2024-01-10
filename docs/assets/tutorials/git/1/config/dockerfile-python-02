@@ -1,0 +1,44 @@
+FROM python:3.12
+
+LABEL fr.asso.ort.lyon.authors="3OLEN - Lumos Camminus"
+
+HEALTHCHECK CMD ["python", "--version"]
+
+    # python
+ENV PYTHONUNBUFFERED=1 \
+    # prevents python creating .pyc files
+    PYTHONDONTWRITEBYTECODE=1 \
+    \
+    # pip
+    PIP_NO_CACHE_DIR=off \
+    PIP_DISABLE_PIP_VERSION_CHECK=on \
+    PIP_DEFAULT_TIMEOUT=100 \
+    \
+    # poetry
+    POETRY_VERSION=1.2.0 \
+    # make poetry install to this location to make sure same location between stages
+    POETRY_HOME="/opt/poetry"
+
+# Install system dependencies
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        curl \
+        build-essential \
+        libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install poetry
+RUN curl -sSL https://install.python-poetry.org | python3 -
+
+ENV PATH="${POETRY_HOME}/bin:${PATH}"
+
+WORKDIR /usr/src/scripts
+
+# Define user to prevent root-user; set host current user gid and uid to bind both users for better permissions
+RUN addgroup --gid 1001 cli \
+    && adduser --disabled-password --uid 1001 --gid 1001 cli \
+    && chown -R cli /usr/src/scripts
+
+USER cli
+
+CMD ["python"]
