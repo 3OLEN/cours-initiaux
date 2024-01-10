@@ -1,3 +1,40 @@
+/***** Components *****/
+/********** Hint **********/
+.hint {
+  border: 1px solid $border-color-01;
+  border-radius: 5em;
+  margin: 1em 0;
+  padding: 0.5em 1em;
+  width: fit-content;
+
+  &:hover, &:active {
+    width: 100%;
+
+    .badge {
+      display: none;
+    }
+    .hidden {
+      display: block;
+    }
+  }
+
+  .badge {
+    cursor: pointer;
+
+    &::before {
+      content: "🔎";
+    }
+  }
+  .hidden {
+    display: none;
+    font-style: italic;
+
+    em {
+      font-style: normal;
+    }
+  }
+}
+
 /***** LIST *****/
 /********** Group **********/
 .list-group {
