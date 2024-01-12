@@ -13,7 +13,7 @@
             </div>
         {% endif %}
 
-        {% if page.next %}
+        {% if page.next and page.title == page.next.title %}
             <div class="pagination-item" title="{{ page.next.subtitle }}">
                 <a href="{{ page.next.url | relative_url }}" class="pagination-number">
                     Suivant
