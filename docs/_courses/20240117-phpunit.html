@@ -1,0 +1,31 @@
+---
+title: "PHPUnit - 17 janvier"
+permalink: /phpunit/17-janvier
+
+# Metadata
+course: PHPUnit
+object: "Suite du cours du 10 janvier"
+session: "2024-01-17"
+
+# Page content
+# Recopy from 20240110-phpunit
+objectives:
+- name: "Qualité d'une application PHP"
+  description: "Mettre en place des tests unitaires codés pour contribuer à la qualité d'une application PHP."
+- name: "Approfondir"
+  description: "Rédiger des tests complexes : `Reflection`, `Mocks`, `DataProviders`."
+
+---
+
+{% assign linked_phpunit_course = site.courses
+        | where_exp: "item", "item.course == page.course"
+        | where_exp: "item", 'item.session == "2024-01-10"'
+        | first
+%}
+
+<div style="text-align: center;">
+    Accéder aux détails du précédent cours :
+    <a href="{{ linked_phpunit_course.url | relative_url }}">
+      {{ linked_phpunit_course.title }}
+    </a>
+</div>
