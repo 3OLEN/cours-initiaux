@@ -21,8 +21,8 @@ solliciter l'expérience du formateur."
 ---
 
 {% assign linked_git_course = site.courses
-        | where: course, page.course
-        | where: session, "2023-12-08"
+        | where_exp: "item", "item.course == page.course"
+        | where_exp: "item", 'item.session == "2023-12-08"'
         | first
 %}
 
