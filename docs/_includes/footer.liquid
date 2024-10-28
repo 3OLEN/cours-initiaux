@@ -23,3 +23,79 @@
         </div>
     </div>
 </footer>
+
+<div class="sub-footer">
+    <section id="theme-switch">
+        <header>Sélection du thème visuel</header>
+        <main>
+            <button data-theme="classic">Clair</button>
+            <button data-theme="dark">Sombre</button>
+        </main>
+    </section>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // region    -- Theme
+        document.querySelectorAll('#theme-switch > main > button').forEach(button => {
+            button.addEventListener('click', () => {
+                if (
+                    button.classList.contains('active')
+                    || (
+                        localStorage.getItem('theme') !== null
+                        && button.dataset.theme === localStorage.getItem('theme')
+                    )
+                ) {
+                    return
+                }
+                selectTheme(button.dataset.theme)
+            })
+        })
+        selectTheme(localStorage.getItem('theme'))
+        // endregion -- Theme
+    })
+    // region    -- Theme
+    function selectTheme(theme = 'classic') {
+        theme ??= 'classic'
+        loadTheme(theme)
+            .then(() => replaceTheme(theme))
+    }
+    function loadTheme(theme) {
+        return new Promise((resolve) => {
+            const stylesheet = document.createElement('link')
+            stylesheet.rel = 'stylesheet'
+            stylesheet.href = `/assets/css/style-${theme}.css`
+            stylesheet.onload = resolve
+            document.head.appendChild(stylesheet)
+        })
+    }
+    function replaceTheme(theme) {
+        // Remove theme stylesheet
+        document.head.querySelectorAll('link[rel="stylesheet"]').forEach(stylesheet => {
+            if (
+                stylesheet.href.includes('style-')
+                && stylesheet.href.includes(`style-${theme}`) === false
+            ) {
+                stylesheet.remove()
+            }
+        })
+        setSelectedTheme(theme)
+    }
+    function setSelectedTheme(theme) {
+        // Display selected theme
+        document.querySelectorAll('#theme-switch > main > button').forEach(button => {
+            button.classList.remove('active')
+            if (button.dataset.theme === theme) {
+                button.classList.add('active')
+            }
+        })
+        // Store selected theme
+        localStorage.setItem('theme', theme)
+    }
+    selectTheme.toString
+        = loadTheme.toString
+        = replaceTheme.toString
+        = setSelectedTheme.toString
+        = undefined
+    // endregion -- Theme
+</script>
